@@ -1,7 +1,7 @@
 class DataMemDAO {
 
     constructor() {
-        this.data
+        this.data =[{ id: '1', nombre: 'juan', edad: 23 }, { id: '2', nombre: 'ana', edad: 21 },];
     }
 
     getData = async id => {

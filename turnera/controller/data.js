@@ -1,20 +1,20 @@
-import DataService from '../service/data.js'
+import ApiUsuarios from '../api/usuariosApi.js'
 
 
 class ControladorData {
 
     constructor() {
-        this.dataService = new DataService()
+        this.apiUsuarios = new ApiUsuarios()
     }
 
     getData = async (req,res) => {
         const { id } = req.params
-        res.json(  await this.dataService.getData(id) )
+        res.json(  await this.apiUsuarios.obtenerUsuarios(id) )
     }
 
     saveData = async (req,res) => {
         const data = req.body
-        res.json(await this.dataService.saveData(data))
+        res.json(await this.apiUsuarios.guardarUsuario(data))
         //res.redirect('/')
     }
 
@@ -22,13 +22,13 @@ class ControladorData {
         const { id } = req.params
         const data = req.body
     
-        res.json(await this.dataService.updateData(data,id))
+        res.json(await this.apiUsuarios.actualizarUsuario(data,id))
     }
 
     deleteData = async (req,res) => {
         const { id } = req.params
     
-        res.json(await this.dataService.deleteData(id))
+        res.json(await this.apiUsuarios.eliminarUsuario(id))
     }
 }
 
