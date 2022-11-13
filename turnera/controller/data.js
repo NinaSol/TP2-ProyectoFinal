@@ -7,6 +7,15 @@ class ControladorData {
         this.apiUsuarios = new ApiUsuarios()
     }
 
+    getMayores = async(req,res) =>{
+        res.json(await this.apiUsuarios.obtenerMayores())
+    }
+
+    getMejor = async(req,res) =>{
+        res.json(await this.apiUsuarios.obtenerMejor())
+    }
+
+
     getData = async (req,res) => {
         const { id } = req.params
         res.json(  await this.apiUsuarios.obtenerUsuarios(id) )
