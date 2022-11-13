@@ -19,4 +19,50 @@ export class PeliculasService {
     deletePelicula = async id => {
         return await this.peliculasModel.deletePelicula(id)
     }
+    getPeliClasificacion = async clasificacion => {
+        const peliculas = await this.peliculasModel.getPeliculas()
+        const resultado = peliculas.filter(pelicula => pelicula.clasificacion == clasificacion)
+        return resultado
+    }
+    getPeliGenero = async genero => {
+        const peliculas = await this.peliculasModel.getPeliculas()
+        const resultado = peliculas.filter(pelicula => pelicula.genero == genero)
+        return resultado
+    }
+    getPeliMasCara = async _ => {
+        const peliculas = await this.peliculasModel.getPeliculas()
+        peliculas.sort((a, b) => {
+            if(a.precio > b.precio) return -1
+            if(a.precio < b.precio) return 1
+            return 0
+        })
+        return peliculas[0]
+    }
+    getPeliMasBarata = async _ => {
+        const peliculas = await this.peliculasModel.getPeliculas()
+        peliculas.sort((a, b) => {
+            if(a.precio > b.precio) return 1
+            if(a.precio < b.precio) return -1
+            return 0
+        })
+        return peliculas[0]
+    }
+    getPeliMasLarga = async _ => {
+        const peliculas = await this.peliculasModel.getPeliculas()
+        peliculas.sort((a, b) => {
+            if(a.duracion > b.duracion) return -1
+            if(a.duracion < b.duracion) return 1
+            return 0
+        })
+        return peliculas[0]
+    }
+    getPeliMasCorta = async _ => {
+        const peliculas = await this.peliculasModel.getPeliculas()
+        peliculas.sort((a, b) => {
+            if(a.duracion > b.duracion) return 1
+            if(a.duracion < b.duracion) return -1
+            return 0
+        })
+        return peliculas[0]
+    }
 }
