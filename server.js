@@ -2,8 +2,12 @@ import express from 'express'
 import {CnxMongoDB} from './model/cnxMongoDB.js'
 import config from './config.js'
 import {RouterPeliculas} from './router/peliculas.js'
+import cors from 'cors'
 
 const app = express()
+
+app.use(cors())
+
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
