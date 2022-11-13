@@ -7,10 +7,10 @@ export class RouterPeliculas {
         this.controladorPeliculas = new ControladorPeliculas()
     }
     start() {
-        this.router.get('/:id?', this.controladorPeliculas.getPelicula)
-        this.router.post('/', this.controladorPeliculas.savePeliculas)
-        this.router.put('/:id', this.controladorPeliculas.updatePeliculas)
-        this.router.delete('/:id', this.controladorPeliculas.deletePeliculas)
+        this.router.get('/:id?', this.controladorPeliculas.getPeliculas)
+        this.router.post('/', this.controladorPeliculas.savePelicula)
+        this.router.put('/:id', this.controladorPeliculas.updatePelicula)
+        this.router.delete('/:id', this.controladorPeliculas.deletePelicula)
         return this.router
     }
 }
