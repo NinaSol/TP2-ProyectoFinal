@@ -8,7 +8,7 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use('/api/peliculas', new RouterPeliculas().start())
+app.use('/cineort/peliculas', new RouterPeliculas().start())
 
 if(config.DB == 'MONGO') {
     await CnxMongoDB.conectar()
