@@ -42,15 +42,18 @@ class ControladorFunciones {
 
     deleteFuncion = async (req,res) => {
         const { id } = req.params
-    
         res.json(await this.funcionesService.deleteFuncion(id))
     }
 
     calcularCapacidad = async (req,res) => {
-        console.log("en controlador calcular")
         const { nro } = req.params
         res.json( await this.funcionesService.calcularCapacidad(nro) )
     }
+
+    comprar = async (req,res) => {
+        const { id } = req.params
+        res.json( await this.funcionesService.comprar(id) )
+    } 
 }
 
 export default ControladorFunciones

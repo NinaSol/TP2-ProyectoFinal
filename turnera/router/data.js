@@ -19,6 +19,7 @@ export class DataRouter {
         this.router.get('/funcionMenosVendida', this.funcionesController.getFuncionsmenosVendida)
         this.router.get('/calcularCapacidad/:nro', this.funcionesController.calcularCapacidad)
         this.router.get('/funciones/:id', this.funcionesController.getFunciones)
+        this.router.get('/funciones/comprar/:id', this.funcionesController.comprar)
         
         /* ------------CREAR FUNCION----------------------------- */
         this.router.post('/funciones/', this.funcionesController.saveFuncion)

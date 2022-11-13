@@ -29,6 +29,12 @@ class ServiceFunciones {
     }
 
 
+    comprar = async (id) => {
+        let funcion =  await this.funcionDAO.getFuncion(id)
+        funcion.capacidad = funcion.capacidad -1;
+        this.funcionDAO.updateFuncion(funcion,id)
+    }
+
     getFuncionMasVendida = async ()  => {     
         let maxCant = -99;
         let cantidadActual = 0;

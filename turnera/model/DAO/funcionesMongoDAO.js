@@ -51,9 +51,8 @@ class FuncionesMongoDAO{
     
     deleteFuncion = async id => {
         if(!CnxMongoDB.connection) return {}
-        let funcionEliminada = await this.findCliente(id)
+        let funcionEliminada = await this.getFuncion(id)
         await CnxMongoDB.db.collection('funciones').deleteOne({_id: ObjectId(id)})
-        
         return funcionEliminada    
     }
 
