@@ -1,20 +1,14 @@
 import express from 'express'
 import CnxMongoDB from './model/cnxMongoDB.js'
 import config from './config.js'
-import  {DataRouter}  from './router/data.js'
+import  {TicketRouter}  from './router/tickets.js'
 
 const app = express()
 app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-
-/*  app.get('/ping', (req,res) => {
-    res.send('pong')
-}) 
- */
-
-app.use('/api/data', new DataRouter().start())
+app.use('/tickets', new TicketRouter().start())
 
 
 if(config.DB == 'MONGO') {

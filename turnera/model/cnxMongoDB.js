@@ -4,18 +4,18 @@ import config from "../config.js";
 class CnxMongoDB {
   static connection = false;
   static db;
-  static data;
+  static cine;
 
   static conectar = async (_) => {
     try {
-      CnxMongoDB.data = new MongoClient(config.URI, {
+      CnxMongoDB.cine = new MongoClient(config.URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
 
-      await CnxMongoDB.data.connect();
+      await CnxMongoDB.cine.connect();
 
-      CnxMongoDB.db = CnxMongoDB.data.db(config.BASE);
+      CnxMongoDB.db = CnxMongoDB.cine.db(config.BASE);
       CnxMongoDB.connection = true;
     } catch (error) {
       console.log(error.message);
@@ -24,7 +24,7 @@ class CnxMongoDB {
 
   static desconectar = async () => {
     if (!CnxMongoDB.connection) return;
-    await CnxMongoDB.data.close();
+    await CnxMongoDB.cine.close();
   };
 }
 
