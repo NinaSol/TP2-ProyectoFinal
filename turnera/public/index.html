@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Libros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    
+    <div class="container mt-3">
+        <div class="jumbotron ">
+            <h2>Ingrese una nota</h2>
+            <br>
+
+            <form action="/cineort/funciones" method="post" autocomplete="off">
+                <div class="form-group">
+                    <label for="nro">nro</label>
+                    <input type="text" id="nro" name="nro" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="idPelicula">IdPelicula</label>
+                    <input type="text" id="idPelicula" name="idPelicula" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="capacidad">Capacidad</label>
+                    <input type="text" id="capacidad" name="capacidad" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="capacidadMax">Capacidad Max</label>
+                    <input type="text" id="capacidadMax" name="capacidadMax" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="text" id="fecha" name="fecha" class="form-control">
+                </div>
+
+                <button class="btn btn-success mt-3">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

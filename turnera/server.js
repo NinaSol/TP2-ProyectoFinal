@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}))
 }) 
  */
 
-app.use('/api/data', new DataRouter().start())
+app.use('/cineort/', new DataRouter().start())
 
 
 if(config.DB == 'MONGO') {
