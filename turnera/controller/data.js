@@ -1,4 +1,4 @@
-import ApiUsuarios from '../api/usuariosApi.js'
+import ApiUsuarios from '../service/data.js'
 
 
 class ControladorData {

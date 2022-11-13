@@ -1,65 +1,64 @@
-import config from "../config.js";
-import DataFactory from '../model/DAO/dataFactory.js'
+// import config from "../config.js";
+// import DataFactory from '../model/DAO/dataFactory.js'
 
-class ApiUsuarios{
-
-
-    constructor(){
-        this.usuariosModel = DataFactory.get(config.DB);
-    }
+// class ApiUsuarios{
 
 
-    obtenerMayores = async _ => {
-        // let array = await this.usuariosModel.getAllData();
-        //return await this.usuariosModel.obtenerMayoresDeEdad();
-        let clientes = await this.usuariosModel.getAllData();
-
-        let clientesMayores = clientes.filter(e => e.edad >= 18)
-        if (clientesMayores.length == 0) {
-            clientesMayores = []
-        }
-
-        return clientesMayores;
-    }
+//     constructor(){
+//         this.usuariosModel = DataFactory.get(config.DB);
+//     }
 
 
-    obtenerMejor = async _ => {
-        try {
-            let clientes = await this.usuariosModel.getAllData();
 
-            let max = clientes[0].peliculas.length
-            let cant = clientes.length
-            let mejor_cliente =clientes[0];
-            
+//     // (new Date() - new Date("2002-01-24")) / 31536000000
 
-            for (let i = 0; i < cant; i++) {
-                if (clientes[i].peliculas.length > max) {
-                    max = clientes[i].peliculas.length
-                    mejor_cliente = clientes[i];
-                }
-            }
-            return { mejor_cliente }
-        } catch (error) {
-            console.log('error en el obtener mejor cliente ' + error);
-        }
-    }
+//     obtenerMayores = async _ => {
+//         let clientes = await this.usuariosModel.getAllData();
 
-    obtenerUsuarios = async id=>{
-        return id? await this.usuariosModel.getData(id) : await this.usuariosModel.getAllData();
-    }
+//         let clientesMayores = clientes.filter(e => e.edad >= 18)
+//         if (clientesMayores.length == 0) {
+//             clientesMayores = []
+//         }
+//         return clientesMayores;
+//     }
 
-    guardarUsuario= async usuario =>{
-        return await this.usuariosModel.saveData(usuario);
-    }
 
-    actualizarUsuario = async(usuario,id) =>{
-        return this.usuariosModel.updateData(usuario, id);
-    }
+//     obtenerMejor = async _ => {
+//         try {
+//             let clientes = await this.usuariosModel.getAllData();
 
-    eliminarUsuario = async id =>{
-        return await this.usuariosModel.deleteData(id);
-    }
+//             let max = clientes[0].peliculas.length
+//             let cant = clientes.length
+//             let mejor_cliente =clientes[0];
+        
+//             for (let i = 0; i < cant; i++) {
+//                 if (clientes[i].peliculas.length > max) {
+//                     max = clientes[i].peliculas.length
+//                     mejor_cliente = clientes[i];
+//                 }
+//             }
+//             return { mejor_cliente }
+//         } catch (error) {
+//             console.log('error en el obtener mejor cliente ' + error);
+//         }
+//     }
 
-}
+//     obtenerUsuarios = async id=>{
+//         return id? await this.usuariosModel.getData(id) : await this.usuariosModel.getAllData();
+//     }
 
-export default ApiUsuarios
+//     guardarUsuario= async usuario =>{
+//         return await this.usuariosModel.saveData(usuario);
+//     }
+
+//     actualizarUsuario = async(usuario,id) =>{
+//         return this.usuariosModel.updateData(usuario, id);
+//     }
+
+//     eliminarUsuario = async id =>{
+//         return await this.usuariosModel.deleteData(id);
+//     }
+
+// }
+
+// export default ApiUsuarios

@@ -8,14 +8,6 @@ class DataMemDAO {
     }
 
 
-    // obtenerMayoresDeEdad = async _ => {
-    //     let array = this.data.filter(e => e.edad > 18)
-    //     if (array.length == 0) {
-    //         array = this.data;
-    //     }
-    //     return array
-    // }
-
     getData = async id => {
         return this.data.find(d => d.id == id)    
     }
