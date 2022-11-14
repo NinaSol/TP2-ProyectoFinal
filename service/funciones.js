@@ -12,7 +12,6 @@ class ServiceFunciones {
     }
 
     saveFuncion = async funcion => {
-        console.log(funcion)
         return await this.funcionDAO.saveFuncion(funcion)
     }
 
@@ -40,7 +39,6 @@ class ServiceFunciones {
         let cantidadActual = 0;
         let funcionMasVendida;
         let funciones = await this.funcionDAO.getFunciones()
-        console.log(funciones)
         for (let index = 0; index < funciones.funciones.length; index++) {
             cantidadActual = funciones.funciones[index].capacidadMax - funciones.funciones[index].capacidad;
             if(cantidadActual > maxCant) {
@@ -68,11 +66,9 @@ class ServiceFunciones {
 
     }
 
-    calcularCapacidad = async (nro) => { 
-        let funciones = await this.funcionDAO.getFunciones()
-        let funcion = funciones.funciones.find(funcion => funcion.nro == nro)
-        let capActual = funcion.capacidadMax - funcion.capacidad;
-        return `La capacidad actual de la función nro ${nro} es ${capActual}`
+    calcularCapacidad = async (id) => { 
+        let funcion = await this.funcionDAO.getFuncion(id)
+        return funcion.capacidad;
         
     }
 
