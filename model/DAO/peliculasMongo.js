@@ -5,9 +5,10 @@ import getLastId from "../../utils/getLastId.js";
 export class PeliculasMongo {
   getPelicula = async (id) => {
     if (!CnxMongoDB.connection) return {};
+    id = parseInt(id)
     let pelicula = await CnxMongoDB.db
       .collection("peliculas")
-      .findOne({ _id: ObjectId(id) });
+      .findOne({ _id: id });
     return pelicula;
   };
   getPeliculas = async (_) => {
