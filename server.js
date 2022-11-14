@@ -15,10 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 app.use("/cineort/peliculas", new RouterPeliculas().start());
 app.use("/cineort", new FuncionesRouter().start());
 app.use("/cineort/usuarios", new UsuariosRouter().start());
