@@ -4,6 +4,7 @@ import config from "./config.js";
 import { RouterPeliculas } from "./router/peliculas.js";
 import { FuncionesRouter } from "./router/funciones.js";
 import { UsuariosRouter } from "./router/usuarios.js";
+import { TicketRouter } from "./router/tickets.js";
 
 import cors from "cors";
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/cineort/peliculas", new RouterPeliculas().start());
 app.use("/cineort", new FuncionesRouter().start());
 app.use("/cineort/usuarios", new UsuariosRouter().start());
+app.use("/cineort/tickets", new TicketRouter().start());
 
 if (config.DB == "MONGO") {
   await CnxMongoDB.conectar();
