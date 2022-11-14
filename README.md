@@ -1,1 +1,1 @@
-Por ahora el README está vacío jeje
+Proyecto final de la materia Taller de programacion 2
