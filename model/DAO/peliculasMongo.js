@@ -32,15 +32,17 @@ export class PeliculasMongo {
     }
     updatePelicula = async (pelicula,id) => {
         if(!CnxMongoDB.connection) return {}
+        id = parseInt(id)
         let resultado = await CnxMongoDB.db.collection('peliculas').updateOne(
-            {_id: ObjectId(id)},
+            {id: id },
             {$set: pelicula}
         )
         return resultado
     }
     deletePelicula = async id => {
         if(!CnxMongoDB.connection) return {}
-        let resultado = await CnxMongoDB.db.collection('peliculas').deleteOne({_id: ObjectId(id)})
+        id = parseInt(id)
+        let resultado = await CnxMongoDB.db.collection('peliculas').deleteOne({id: id })
         return resultado    
     }
 }
