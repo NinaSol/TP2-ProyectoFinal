@@ -2,7 +2,9 @@ import express from "express";
 import { CnxMongoDB } from "./model/cnxMongoDB.js";
 import config from "./config.js";
 import { RouterPeliculas } from "./router/peliculas.js";
-import { DataRouter } from "./router/data.js";
+import { FuncionesRouter } from "./router/funciones.js";
+import { UsuariosRouter } from "./router/usuarios.js";
+
 import cors from "cors";
 
 const app = express();
@@ -17,7 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/cineort/peliculas", new RouterPeliculas().start());
-app.use("/cineort", new DataRouter().start());
+app.use("/cineort", new FuncionesRouter().start());
+app.use("/cineort/usuarios", new UsuariosRouter().start());
 
 if (config.DB == "MONGO") {
   await CnxMongoDB.conectar();
