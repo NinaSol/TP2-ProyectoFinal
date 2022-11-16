@@ -1,6 +1,6 @@
 import config from '../config.js'
 import DataFactory from '../model/DAO/dataFactory.js'
-
+import funciones from '../service/funciones.js'
 
 class ServiceData {
     constructor() {
@@ -67,7 +67,10 @@ class ServiceData {
 
     // agregar temporal: al agregar una nueva se borra las anteriores
     // confirmar ref de pelicula que guarda el cliente
+    // idSala no exite
+    // no coinciden id
     agregarPelicula = async(data,id) =>{
+       // funciones.comprar(id); 
         return this.usuariosModel.updateData(data, id)
     }
 
