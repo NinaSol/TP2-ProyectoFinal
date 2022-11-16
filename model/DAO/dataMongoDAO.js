@@ -1,17 +1,28 @@
 import { CnxMongoDB } from "../cnxMongoDB.js";
 import { ObjectId } from "mongodb";
+import getLastId from "../../utils/getLastId.js";
 
 class DataMongoDAO {
   getData = async (id) => {
     if (!CnxMongoDB.connection) return {};
-    let d = await CnxMongoDB.db
+    id = parseInt(id)
+    let user = await CnxMongoDB.db
       .collection("usuarios")
-      .findOne({ _id: ObjectId(id) });
-    return d;
+      .findOne({ _id: id });
+    return user;
   };
 
   getAllData = async () => {
-    return CnxMongoDB.db.collection("usuarios").findOne({});
+    // return CnxMongoDB.db.collection("usuarios").findOne({});
+    try {
+      let usuarios = await CnxMongoDB.db
+        .collection("usuarios")
+        .find({})
+        .toArray();
+      return usuarios;
+    } catch (error) {
+      return []
+    }
   };
 
   getAllData = async () => {
@@ -24,29 +35,40 @@ class DataMongoDAO {
     }
   };
 
-  saveData = async (d) => {
+  saveData = async (user) => {
     if (!CnxMongoDB.connection) return {};
-
-    d.edad = parseInt(d.edad);
-    await CnxMongoDB.db.collection("usuarios").insertOne(d);
-    return d;
+    user._id =  (await getLastId("usuarios")) + 1;
+    await CnxMongoDB.db.collection("usuarios").insertOne(user);
+    return user;
   };
 
-  updateData = async (d, id) => {
+  updateData = async (user, id) => {
     if (!CnxMongoDB.connection) return {};
-
+    id = parseInt(id);
+    
     await CnxMongoDB.db
       .collection("usuarios")
-      .updateOne({ _id: ObjectId(id) }, { $set: d });
+      .updateOne({ _id: id }, { $set: user });
     let clienteActualizado = await this.getData(id);
     return clienteActualizado;
   };
 
+  // no implementado
+  sendPelicula = async(data,id)=>{
+    if (!CnxMongoDB.connection) return {};
+    id = parseInt(id);
+
+    let user = await CnxMongoDB.db.collection("usuarios").findOne({ _id: id });
+    let pelis =  user.peliculas.push(data)
+    
+    return this.updateData(pelis,id);
+  }
+
   deleteData = async (id) => {
     if (!CnxMongoDB.connection) return {};
-
+    id = parseInt(id);
     let deletedData = await this.getData(id);
-    await CnxMongoDB.db.collection("usuarios").deleteOne({ _id: ObjectId(id) });
+    await CnxMongoDB.db.collection("usuarios").deleteOne({ _id: id});
 
     return deletedData;
   };

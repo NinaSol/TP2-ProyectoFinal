@@ -7,14 +7,32 @@ class ServiceData {
         this.usuariosModel = DataFactory.get(config.DB);
     }
 
-  
-    obtenerMayores = async _ => {
-        let clientes = await this.usuariosModel.getAllData();
 
-        let clientesMayores = clientes.filter(e => e.edad >= 18)
-        if (clientesMayores.length == 0) {
-            clientesMayores = []
+    obtenerPeliculas = async (id) =>{
+        const user = await this.usuariosModel.getData(id)
+        return user.peliculas;
+    }
+
+    obtenerPorNombre = async (nombre) =>{
+        let clientes = await this.usuariosModel.getAllData();
+        let encontrado;
+         for(let i =0; i< clientes.length ; i++){
+            if(clientes[i].nombre==nombre){encontrado = clientes[i]}
         }
+        return encontrado;
+    }
+  
+    obtenerMenores= async _ => {
+        const clientes = await this.usuariosModel.getAllData();
+
+        const clientesMayores = clientes.filter(e => e.edad < 18)
+        return clientesMayores;
+    }
+
+    obtenerMayores = async _ => {
+        const clientes = await this.usuariosModel.getAllData();
+
+        const clientesMayores = clientes.filter(e => e.edad >= 18)
         return clientesMayores;
     }
 
@@ -47,8 +65,14 @@ class ServiceData {
         return await this.usuariosModel.saveData(usuario);
     }
 
-    actualizarUsuario = async(usuario,id) =>{
-        return this.usuariosModel.updateData(usuario, id);
+    // agregar temporal: al agregar una nueva se borra las anteriores
+    // confirmar ref de pelicula que guarda el cliente
+    agregarPelicula = async(data,id) =>{
+        return this.usuariosModel.updateData(data, id)
+    }
+
+    actualizarUsuario = async(data,id) =>{
+        return this.usuariosModel.updateData(data, id);
     }
 
     eliminarUsuario = async id =>{
