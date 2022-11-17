@@ -1,5 +1,5 @@
-import { CnxMongoDB } from "../cnxMongoDB.js";
-import getLastId from "../../utils/getLastId.js";
+import { CnxMongoDB } from "../../cnxMongoDB.js";
+import getLastId from "../../../utils/getLastId.js";
 
 export class PeliculasMongo {
   getPelicula = async (id) => {

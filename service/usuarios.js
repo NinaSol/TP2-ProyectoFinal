@@ -1,6 +1,6 @@
 import config from '../config.js'
-import DataFactory from '../model/DAO/dataFactory.js'
-import ServiceTicket from "../service/ticket.js";
+import DataFactory from '../model/DAO/usuarios/dataFactory.js'
+import ServiceTicket from '../service/ticket.js'
 
 class ServiceData {
     constructor() {

@@ -1,6 +1,5 @@
-import { CnxMongoDB } from "../cnxMongoDB.js";
-import getLastId from "../../utils/getLastId.js";
-import { PeliculasMongo } from "./peliculasMongo.js";
+import { CnxMongoDB } from "../../cnxMongoDB.js";
+import getLastId from "../../../utils/getLastId.js";
 
 class TicketMongoDAO {
   obtenerTicket = async (id) => {
