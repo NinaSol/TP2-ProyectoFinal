@@ -8,6 +8,11 @@ class ServiceData {
         this.ticket = new ServiceTicket();
     }
 
+    obtenerUserPorPassword = async (data) =>{
+        const user = await this.usuariosModel.getAllData()
+        let encontrado = user.filter( e=> e.password == data.password && e.email == data.email);
+        return encontrado.length? 'true':'false';
+    }
 
     obtenerPeliculas = async (id) =>{
         const user = await this.usuariosModel.getData(id)
@@ -69,7 +74,7 @@ class ServiceData {
     
     agregarPelicula = async(data,id) =>{
        //idFuncion, idUsuario, idPelicula
-        //this.ticket.crearTicket(data)
+        this.ticket.crearTicket(data)
         return this.usuariosModel.updateData(data, id)
     }
 

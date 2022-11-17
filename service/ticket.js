@@ -6,6 +6,7 @@ class ServiceTicket {
     this.ticketDAO = TicketFactory.get(config.DB);
   }
 
+  
   obtenerTicket = async (id) => {
     return id
       ? await this.ticketDAO.obtenerTicket(id)

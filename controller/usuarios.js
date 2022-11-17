@@ -6,6 +6,12 @@ class ControladorData {
   }
 
 
+  getUsuario = async(req,res) =>{
+    const usuario = req.body;
+    res.json(await this.apiUsuarios.obtenerUserPorPassword(usuario))
+  }
+
+
   getPeliculas = async(req,res) =>{
     const { id } = req.params;
     res.json(await this.apiUsuarios.obtenerPeliculas(id))
