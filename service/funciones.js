@@ -27,6 +27,10 @@ class ServiceFunciones {
         return await this.funcionDAO.getFuncionesPorFecha(fecha)
     }
 
+    getFuncionesPorPelicula = async (idPelicula) =>{
+        return await this.funcionDAO.getFuncionesPorPelicula(idPelicula)
+    }
+
 
     comprar = async (id) => {
         let funcion =  await this.funcionDAO.getFuncion(id)
