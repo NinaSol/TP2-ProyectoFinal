@@ -1,5 +1,5 @@
 import config from '../config.js'
-import {PeliculasFactoryDAO} from '../model/DAO/peliculasFactory.js'
+import {PeliculasFactoryDAO} from '../model/DAO/peliculas/peliculasFactory.js'
 
 export class PeliculasService {
     constructor() {

@@ -1,4 +1,4 @@
-import { CnxMongoDB } from "../cnxMongoDB.js";
+import { CnxMongoDB } from "../../cnxMongoDB.js";
 import { ObjectId } from "mongodb";
 import getLastId from "../../utils/getLastId.js";
 

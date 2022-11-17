@@ -1,5 +1,5 @@
 import config from '../config.js'
-import FuncionesFactoryDAO from '../model/DAO/funcionesFactory.js'
+import FuncionesFactoryDAO from '../model/DAO/funciones/funcionesFactory.js'
 
 
 class ServiceFunciones {

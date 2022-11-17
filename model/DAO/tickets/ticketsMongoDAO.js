@@ -1,23 +1,23 @@
-import { CnxMongoDB } from "../cnxMongoDB.js";
-import { ObjectId } from "mongodb";
+import { CnxMongoDB } from "../../cnxMongoDB.js";
+import getLastId from "../../../utils/getLastId.js";
 
 class TicketMongoDAO {
   obtenerTicket = async (id) => {
     if (!CnxMongoDB.connection) return {};
     let ticket = await CnxMongoDB.db
       .collection("tickets")
-      .findOne({ _id: ObjectId(id) });
+      .findOne({ _id: parseInt(id) });
     return ticket;
   };
 
-  obtenerTickets = async () => {
-    return CnxMongoDB.db.collection("tickets").findOne({});
+  obtenerTickets = async (_) => {
+    return CnxMongoDB.db.collection("tickets").find({}).toArray();
   };
 
   crearTicket = async (ticket) => {
     if (!CnxMongoDB.connection) return {};
-
     //formato fecha YYYY-mm-dd
+    ticket._id = (await getLastId("tickets")) + 1;
     await CnxMongoDB.db
       .collection("tickets")
       .insertOne({ ...ticket, fecha: new Date() });

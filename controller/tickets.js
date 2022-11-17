@@ -1,33 +1,31 @@
-import ServiceTicket from '../service/ticket.js'
-
+import ServiceTicket from "../service/ticket.js";
 
 class ControllerTicket {
+  constructor() {
+    this.serviceTicket = new ServiceTicket();
+  }
 
-    constructor() {
-        this.serviceTicket = new ServiceTicket()
-    }
+  obtenerTicket = async (req, res) => {
+    const { id } = req.params;
+    res.json(await this.serviceTicket.obtenerTicket(id));
+  };
 
-    obtenerTicket = async (req,res) => {
-        const { id } = req.params
-        res.json(await this.serviceTicket.obtenerTicket(id))
-    }
+  obtenerUltimoTicket = async (req, res) => {
+    res.json(await this.serviceTicket.obtenerUltimoTicket());
+  };
 
-    obtenerUltimoTicket = async (req,res) => {
-        res.json(await this.serviceTicket.obtenerUltimoTicket())
-    }
+  obtenerTicketMayorConsumo = async (req, res) => {
+    res.json(await this.serviceTicket.obtenerTicketMayorConsumo());
+  };
 
-    obtenerTicketMayorConsumo = async (req,res) => {
-        res.json(await this.serviceTicket.obtenerTicketMayorConsumo())
-    }
+  obtenerTicketMenorConsumo = async (req, res) => {
+    res.json(await this.serviceTicket.obtenerTicketMenorConsumo());
+  };
 
-    obtenerTicketMenorConsumo = async (req,res) => {
-        res.json(await this.serviceTicket.obtenerTicketMenorConsumo())
-    }
-
-    crearTicket = async (req,res) => {
-        const ticket = req.body
-        res.json(await this.serviceTicket.crearTicket(ticket))
-    }
+  crearTicket = async (req, res) => {
+    const ticket = req.body;
+    res.json(await this.serviceTicket.crearTicket(ticket));
+  };
 
   /*   actualizarTicket = async (req,res) => {
         const { id } = req.params
@@ -43,4 +41,4 @@ class ControllerTicket {
     } */
 }
 
-export default ControllerTicket
+export default ControllerTicket;
