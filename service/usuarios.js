@@ -1,20 +1,39 @@
 import config from '../config.js'
 import DataFactory from '../model/DAO/usuarios/dataFactory.js'
-
+import ServiceTicket from '../service/ticket.js'
 
 class ServiceData {
     constructor() {
         this.usuariosModel = DataFactory.get(config.DB);
+        this.ticket = new ServiceTicket();
     }
 
-  
-    obtenerMayores = async _ => {
-        let clientes = await this.usuariosModel.getAllData();
 
-        let clientesMayores = clientes.filter(e => e.edad >= 18)
-        if (clientesMayores.length == 0) {
-            clientesMayores = []
+    obtenerPeliculas = async (id) =>{
+        const user = await this.usuariosModel.getData(id)
+        return user.peliculas;
+    }
+
+    obtenerPorNombre = async (nombre) =>{
+        let clientes = await this.usuariosModel.getAllData();
+        let encontrado;
+         for(let i =0; i< clientes.length ; i++){
+            if(clientes[i].nombre==nombre){encontrado = clientes[i]}
         }
+        return encontrado;
+    }
+  
+    obtenerMenores= async _ => {
+        const clientes = await this.usuariosModel.getAllData();
+
+        const clientesMayores = clientes.filter(e => e.edad < 18)
+        return clientesMayores;
+    }
+
+    obtenerMayores = async _ => {
+        const clientes = await this.usuariosModel.getAllData();
+
+        const clientesMayores = clientes.filter(e => e.edad >= 18)
         return clientesMayores;
     }
 
@@ -47,8 +66,15 @@ class ServiceData {
         return await this.usuariosModel.saveData(usuario);
     }
 
-    actualizarUsuario = async(usuario,id) =>{
-        return this.usuariosModel.updateData(usuario, id);
+    
+    agregarPelicula = async(data,id) =>{
+       //idFuncion, idUsuario, idPelicula
+        //this.ticket.crearTicket(data)
+        return this.usuariosModel.updateData(data, id)
+    }
+
+    actualizarUsuario = async(data,id) =>{
+        return this.usuariosModel.updateData(data, id);
     }
 
     eliminarUsuario = async id =>{
