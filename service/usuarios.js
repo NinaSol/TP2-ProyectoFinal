@@ -1,5 +1,5 @@
 import config from '../config.js'
-import DataFactory from '../model/DAO/dataFactory.js'
+import DataFactory from '../model/DAO/usuarios/dataFactory.js'
 
 
 class ServiceData {

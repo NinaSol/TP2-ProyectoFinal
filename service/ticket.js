@@ -1,5 +1,5 @@
 import config from "../config.js";
-import TicketFactory from "../model/DAO/ticketsFactory.js";
+import TicketFactory from "../model/DAO/tickets/ticketsFactory.js";
 
 class ServiceTicket {
   constructor() {
