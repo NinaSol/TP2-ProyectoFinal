@@ -55,9 +55,9 @@ class ControladorFunciones {
         res.json( await this.funcionesService.calcularCapacidad(nro) )
     }
 
-    comprar = async (req,res) => {
+    restarCapacidad = async (req,res) => {
         const { id } = req.params
-        res.json( await this.funcionesService.comprar(id) )
+        res.json( await this.funcionesService.restarCapacidad(id) )
     } 
 }
 

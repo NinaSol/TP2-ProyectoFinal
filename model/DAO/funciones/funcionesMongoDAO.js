@@ -1,6 +1,6 @@
 import { CnxMongoDB } from "../../cnxMongoDB.js";
 import { ObjectId } from "mongodb";
-import getLastId from "../../utils/getLastId.js";
+import getLastId from "../../../utils/getLastId.js";
 
 class FuncionesMongoDAO {
   getFuncion = async (id) => {
@@ -54,6 +54,18 @@ class FuncionesMongoDAO {
     return "La funcion fue eliminada";
   };
 
+
+  getFuncionesPorPelicula = async (idPelicula) => {
+    if (!CnxMongoDB.connection) return {};
+    let funciones = await CnxMongoDB.db
+        .collection("funciones")
+        .find({})
+        .toArray();
+    let funcionesEncotradas = funciones.filter(f => f.idPelicula == idPelicula )
+    return funcionesEncotradas;
+}
+
+
   getFuncionesPorFecha = async (fecha) => {
     if (!CnxMongoDB.connection) return {};
     let funcionEncotrada = await CnxMongoDB.db
@@ -61,6 +73,11 @@ class FuncionesMongoDAO {
       .findOne({ fecha: fecha });
     return funcionEncotrada;
   };
+
+  
+
+
+
 }
 
 export default FuncionesMongoDAO;

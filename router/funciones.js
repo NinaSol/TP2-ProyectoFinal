@@ -12,13 +12,13 @@ export class FuncionesRouter {
 
     /* ------------OBTENER INFO----------------------------- */
     this.router.get("/", this.funcionesController.getFunciones);
+    this.router.get("/obtenerPorPelicula/:idPelicula",this.funcionesController.getFuncionesPorPelicula);
     this.router.get("/obtenerPorFecha/:fecha",this.funcionesController.getFuncionesPorFecha);
-    this.router.get("/obtenerPorPelicula/:id",this.funcionesController.getFuncionesPorPelicula);
     this.router.get("/masVendida",this.funcionesController.getFuncionsMasVendida);
     this.router.get("/menosVendida", this.funcionesController.getFuncionsmenosVendida);
     this.router.get("/calcularCapacidad/:nro",this.funcionesController.calcularCapacidad);
+    this.router.get("/restarCapacidad/:id", this.funcionesController.restarCapacidad);
     this.router.get("/:id", this.funcionesController.getFunciones);
-    this.router.get("/comprar/:id", this.funcionesController.comprar);
 
     /* ------------CREAR FUNCION----------------------------- */
     this.router.post("/", this.funcionesController.saveFuncion);

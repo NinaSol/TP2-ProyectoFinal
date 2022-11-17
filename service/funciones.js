@@ -32,7 +32,7 @@ class ServiceFunciones {
     }
 
 
-    comprar = async (id) => {
+    restarCapacidad = async (id) => {
         let funcion =  await this.funcionDAO.getFuncion(id)
         funcion.capacidad = funcion.capacidad -1;
         this.funcionDAO.updateFuncion(funcion,id)
