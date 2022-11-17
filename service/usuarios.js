@@ -1,10 +1,11 @@
 import config from '../config.js'
 import DataFactory from '../model/DAO/dataFactory.js'
-import funciones from '../service/funciones.js'
+import ServiceTicket from "../service/ticket.js";
 
 class ServiceData {
     constructor() {
         this.usuariosModel = DataFactory.get(config.DB);
+        this.ticket = new ServiceTicket();
     }
 
 
@@ -65,12 +66,10 @@ class ServiceData {
         return await this.usuariosModel.saveData(usuario);
     }
 
-    // agregar temporal: al agregar una nueva se borra las anteriores
-    // confirmar ref de pelicula que guarda el cliente
-    // idSala no exite
-    // no coinciden id
+    
     agregarPelicula = async(data,id) =>{
-       // funciones.comprar(id); 
+       //idFuncion, idUsuario, idPelicula
+        //this.ticket.crearTicket(data)
         return this.usuariosModel.updateData(data, id)
     }
 
