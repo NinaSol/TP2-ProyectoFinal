@@ -5,6 +5,11 @@ class ControladorData {
     this.apiUsuarios = new ApiUsuarios();
   }
 
+  validarAdmin = async(req,res) =>{
+    const usuario = req.body
+    res.json(await this.apiUsuarios.validarAdm(usuario))
+  }
+
   validarUsuario = async(req,res) =>{
     const usuario = req.body
     res.json(await this.apiUsuarios.validarUsuario(usuario))
