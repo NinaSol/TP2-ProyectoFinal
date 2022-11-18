@@ -11,11 +11,11 @@ export class UsuariosRouter {
     this.router.get("/mayores", this.dataController.getMayores);
     this.router.get("/menores", this.dataController.getMenores);
     this.router.get("/mejorcliente", this.dataController.getMejor);
-    this.router.get("/validar", this.dataController.getUsuario);
     this.router.get("/:id/mispeliculas", this.dataController.getPeliculas);
     this.router.get("/:nombre", this.dataController.getNomb);
     this.router.get("/:id?", this.dataController.getData);
     this.router.post("/", this.dataController.saveData);
+    this.router.post("/validar", this.dataController.validarUsuario);
     this.router.put("/:id", this.dataController.updatePelicula);
     this.router.put("/:id", this.dataController.updateData);
     this.router.delete("/:id", this.dataController.deleteData);

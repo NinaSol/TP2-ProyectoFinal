@@ -8,10 +8,10 @@ class ServiceData {
         this.ticket = new ServiceTicket();
     }
 
-    obtenerUserPorPassword = async (data) =>{
-        const user = await this.usuariosModel.getAllData()
-        let encontrado = user.filter( e=> e.password == data.password && e.email == data.email);
-        return encontrado.length? 'true':'false';
+    validarUsuario = async (user) =>{
+        const arrayUsers = await this.usuariosModel.getAllData()
+        const encontrado = arrayUsers.filter( u => u.email === user.email && u.password === user.password)
+        return encontrado.length ? true : false
     }
 
     obtenerPeliculas = async (id) =>{
