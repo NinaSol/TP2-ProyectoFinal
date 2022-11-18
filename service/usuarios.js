@@ -11,7 +11,7 @@ class ServiceData {
     validarUsuario = async (user) =>{
         const arrayUsers = await this.usuariosModel.getAllData()
         const encontrado = arrayUsers.filter( u => u.email === user.email && u.password === user.password)
-        return encontrado.length ? true : false
+        return encontrado[0]
     }
 
     obtenerPeliculas = async (id) =>{
