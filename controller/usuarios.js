@@ -5,12 +5,10 @@ class ControladorData {
     this.apiUsuarios = new ApiUsuarios();
   }
 
-
-  getUsuario = async(req,res) =>{
-    const usuario = req.body;
-    res.json(await this.apiUsuarios.obtenerUserPorPassword(usuario))
+  validarUsuario = async(req,res) =>{
+    const usuario = req.body
+    res.json(await this.apiUsuarios.validarUsuario(usuario))
   }
-
 
   getPeliculas = async(req,res) =>{
     const { id } = req.params;
@@ -25,7 +23,6 @@ class ControladorData {
   getMenores = async (req, res) => {
     res.json(await this.apiUsuarios.obtenerMenores());
   };
-
 
   getMayores = async (req, res) => {
     res.json(await this.apiUsuarios.obtenerMayores());
