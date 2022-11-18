@@ -8,6 +8,12 @@ class ServiceData {
         this.ticket = new ServiceTicket();
     }
 
+    validarAdm = async (user) =>{
+        const arrayUsers = await this.usuariosModel.getAllData()
+        const encontrado = arrayUsers.filter( u => u.password == user.password && u.isAdmin==true)
+        return encontrado[0]
+    }
+
     validarUsuario = async (user) =>{
         const arrayUsers = await this.usuariosModel.getAllData()
         const encontrado = arrayUsers.filter( u => u.email === user.email && u.password === user.password)
