@@ -1,11 +1,12 @@
 import config from '../config.js'
 import DataFactory from '../model/DAO/usuarios/dataFactory.js'
-import ServiceTicket from '../service/ticket.js'
+import TicketFactoryDAO from '../model/DAO/tickets/ticketsFactory.js';
+
 
 class ServiceData {
     constructor() {
         this.usuariosModel = DataFactory.get(config.DB);
-        this.ticket = new ServiceTicket();
+        this.ticketDAO = TicketFactoryDAO.get(config.DB);
     }
 
     validarAdm = async (user) =>{
@@ -77,10 +78,17 @@ class ServiceData {
         return await this.usuariosModel.saveData(usuario);
     }
 
-    
-    agregarPelicula = async(id, pelicula) =>{
-       //idFuncion, idUsuario, idPelicula
+
+    agregarPelicula = async (id, pelicula) => {
+        //idFuncion, idUsuario, idPelicula
         //this.ticket.crearTicket(data)
+        let ticket = {
+            "idFuncion": 3,
+            "idUsuario": id,
+            "peliculas": pelicula,
+        }
+
+        await this.ticketDAO.crearTicket(ticket);
         return this.usuariosModel.updateData(pelicula, id)
 
     }
