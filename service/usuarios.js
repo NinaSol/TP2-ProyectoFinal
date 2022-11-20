@@ -78,10 +78,11 @@ class ServiceData {
     }
 
     
-    agregarPelicula = async(data,id) =>{
+    agregarPelicula = async(id, pelicula) =>{
        //idFuncion, idUsuario, idPelicula
-        this.ticket.crearTicket(data)
-        return this.usuariosModel.updateData(data, id)
+        //this.ticket.crearTicket(data)
+        return this.usuariosModel.updateData(pelicula, id)
+
     }
 
     actualizarUsuario = async(data,id) =>{

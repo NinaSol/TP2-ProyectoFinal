@@ -1,5 +1,4 @@
 import { CnxMongoDB } from "../../cnxMongoDB.js";
-import { ObjectId } from "mongodb";
 import getLastId from "../../../utils/getLastId.js";
 
 class DataMongoDAO {
@@ -52,16 +51,6 @@ class DataMongoDAO {
     return clienteActualizado;
   };
 
-  // no implementado
-  sendPelicula = async(data,id)=>{
-    if (!CnxMongoDB.connection) return {};
-    id = parseInt(id);
-
-    let user = await CnxMongoDB.db.collection("usuarios").findOne({ _id: id });
-    let pelis =  user.peliculas.push(data)
-    
-    return this.updateData(pelis,id);
-  }
 
   deleteData = async (id) => {
     if (!CnxMongoDB.connection) return {};
