@@ -6,22 +6,26 @@ class FuncionesMemDAO{
         [
             {
             id: 1,
-            nro:1,
             idPelicula: 1,
             capacidad: 15,
             capacidadMax: 20,
             fecha: "02-11-22",
-            idUsuarios: ["Pablo", "Sol"]
             },
 
             {
             id: 2,
-            nro:2,
             idPelicula: 2,
             capacidad: 5,
             capacidadMax: 20,
             fecha: "22-11-22",
-            idUsuarios: ["Pablo", "Sol"]
+            },
+
+            {
+            id: 3,
+            idPelicula: 2,
+            capacidad: 10,
+            capacidadMax: 20,
+            fecha: "24-11-22",
             },
         ]
         this.cantfunciones = 4
@@ -47,12 +51,10 @@ class FuncionesMemDAO{
         return funcion    
     }
     
-    updateFuncion = async (funcion,id) => {
-        /* Actualización total */    
+    updateFuncion = async (funcion,id) => {  
         funcion.id = id
         const index = this.funciones.findIndex(f => f.id == id)
         this.funciones.splice(index, 1, funcion)
-    
         return funcion    
     }
     
@@ -62,12 +64,14 @@ class FuncionesMemDAO{
         return funcion    
     }
 
-
     getFuncionesPorFecha =  async fecha => {
-        console.log(fecha)
         return this.funciones.find(funcion => funcion.fecha == fecha) 
     }
-  
+
+    getFuncionesPorPelicula = async (idPelicula) => {
+        let funcionesEncotradas = this.funciones.filter(f => f.idPelicula == idPelicula )
+        return funcionesEncotradas;
+    }
 
 }
 

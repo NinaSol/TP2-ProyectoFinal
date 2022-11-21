@@ -11,33 +11,22 @@ export class FuncionesRouter {
     /* -----------------------------------FUNCIONES----------------------------------------- */
 
     /* ------------OBTENER INFO----------------------------- */
-    this.router.get("/funciones", this.funcionesController.getFunciones);
-    this.router.get(
-      "/funcionesPorFecha/:fecha",
-      this.funcionesController.getFuncionesPorFecha
-    );
-    this.router.get(
-      "/funcionMasVendida",
-      this.funcionesController.getFuncionsMasVendida
-    );
-    this.router.get(
-      "/funcionMenosVendida",
-      this.funcionesController.getFuncionsmenosVendida
-    );
-    this.router.get(
-      "/calcularCapacidad/:nro",
-      this.funcionesController.calcularCapacidad
-    );
-    this.router.get("/funciones/:id", this.funcionesController.getFunciones);
-    this.router.get("/funciones/comprar/:id", this.funcionesController.comprar);
+    this.router.get("/", this.funcionesController.getFunciones);
+    this.router.get("/obtenerPorPelicula/:idPelicula",this.funcionesController.getFuncionesPorPelicula);
+    this.router.get("/obtenerPorFecha/:fecha",this.funcionesController.getFuncionesPorFecha);
+    this.router.get("/masVendida",this.funcionesController.getFuncionsMasVendida);
+    this.router.get("/menosVendida", this.funcionesController.getFuncionsmenosVendida);
+    this.router.get("/calcularCapacidad/:nro",this.funcionesController.calcularCapacidad);
+    this.router.get("/restarCapacidad/:id", this.funcionesController.restarCapacidad);
+    this.router.get("/:id", this.funcionesController.getFunciones);
 
     /* ------------CREAR FUNCION----------------------------- */
-    this.router.post("/funciones/", this.funcionesController.saveFuncion);
+    this.router.post("/", this.funcionesController.saveFuncion);
     /* ------------EDITAR FUNCION----------------------------- */
-    this.router.put("/funciones/:id", this.funcionesController.updateFuncion);
+    this.router.put("/:id", this.funcionesController.updateFuncion);
     /* ------------BORRAR FUNCION----------------------------- */
     this.router.delete(
-      "/funciones/:id",
+      "/:id",
       this.funcionesController.deleteFuncion
     );
 

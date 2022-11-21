@@ -5,6 +5,30 @@ class ControladorData {
     this.apiUsuarios = new ApiUsuarios();
   }
 
+  validarAdmin = async(req,res) =>{
+    const usuario = req.body
+    res.json(await this.apiUsuarios.validarAdm(usuario))
+  }
+
+  validarUsuario = async(req,res) =>{
+    const usuario = req.body
+    res.json(await this.apiUsuarios.validarUsuario(usuario))
+  }
+
+  getPeliculas = async(req,res) =>{
+    const { id } = req.params;
+    res.json(await this.apiUsuarios.obtenerPeliculas(id))
+  }
+
+  getNomb = async(req,res) =>{
+    const {nombre} = req.params;
+    res.json(await this.apiUsuarios.obtenerPorNombre(nombre))
+  }
+
+  getMenores = async (req, res) => {
+    res.json(await this.apiUsuarios.obtenerMenores());
+  };
+
   getMayores = async (req, res) => {
     res.json(await this.apiUsuarios.obtenerMayores());
   };
@@ -23,6 +47,15 @@ class ControladorData {
     res.json(await this.apiUsuarios.guardarUsuario(data));
     //res.redirect('/')
   };
+
+  updatePelicula = async (req, res) => {
+    const { id } = req.params;
+    const data = req.body;
+
+    res.json(await this.apiUsuarios.agregarPelicula(data, id));
+  };
+
+
 
   updateData = async (req, res) => {
     const { id } = req.params;

@@ -11,6 +11,7 @@ class ServiceTicket {
     this.usuarioDAO = DataFactoryDAO.get(config.DB);
   }
 
+  
   obtenerTicket = async (id) => {
     return id
       ? await this.ticketDAO.obtenerTicket(id)
