@@ -33,12 +33,12 @@ class ControllerTicket {
     
         res.json(await this.serviceTicket.actualizarTicket(ticket,id))
     }
-
+*/
     eliminarTicket = async (req,res) => {
         const { id } = req.params
     
         res.json(await this.serviceTicket.eliminarTicket(id))
-    } */
+    } 
 }
 
 export default ControllerTicket;

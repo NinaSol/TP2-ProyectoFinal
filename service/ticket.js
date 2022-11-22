@@ -69,9 +69,10 @@ class ServiceTicket {
         return await this.ticketDAO.actualizarTicket(ticket,id)
     }
 
-    eliminarTicket = async id => {
-        return await this.ticketDAO.eliminarTicket(id)
-    } */
+    */
+    //  eliminarTicket = async id => {
+    //      return await this.ticketDAO.eliminarTicket(id)
+    //  } 
 }
 
 export default ServiceTicket;
