@@ -2,7 +2,7 @@ import config from "../config.js";
 import TicketFactory from "../model/DAO/tickets/ticketsFactory.js";
 import { PeliculasFactoryDAO } from "../model/DAO/peliculas/peliculasFactory.js";
 import DataFactoryDAO from "../model/DAO/usuarios/dataFactory.js";
-import main from "../utils/nodemail.js";
+import enviarMail from "../utils/nodemail.js";
 
 class ServiceTicket {
   constructor() {
@@ -11,7 +11,6 @@ class ServiceTicket {
     this.usuarioDAO = DataFactoryDAO.get(config.DB);
   }
 
-  
   obtenerTicket = async (id) => {
     return id
       ? await this.ticketDAO.obtenerTicket(id)
@@ -26,6 +25,7 @@ class ServiceTicket {
       ...pelicula,
       fechaDeCompra: ticket.fecha,
     };
+    return ticketCompleto;
   };
 
   obtenerUltimoTicket = async () => {
@@ -79,10 +79,14 @@ class ServiceTicket {
   crearTicket = async (ticket) => {
     await this.ticketDAO.crearTicket(ticket);
     const usuario = await this.usuarioDAO.getData(ticket.idUsuario);
+
+    const ticketCompleto = await this.obtenerTicketCompleto(ticket._id);
+
     if (ticket.length === undefined) {
-      await main(usuario.email).catch(console.error);
+      await enviarMail(usuario.email, ticketCompleto).catch(console.error);
     }
-    return this.obtenerTicketCompleto(ticket._id);
+
+    return ticketCompleto;
   };
 
   /*  actualizarTicket = async (ticket,id) => {

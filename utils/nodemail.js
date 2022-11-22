@@ -1,10 +1,9 @@
 "use strict";
 import nodemailer from "nodemailer";
-import config from "../config.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-export default async function main(toEmail) {
+export default async function enviarMail(toEmail, ticket) {
   var transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -18,8 +17,17 @@ export default async function main(toEmail) {
   var mailOptions = {
     from: process.env.EMAIL,
     to: toEmail,
-    subject: "Sending Email using Node.js",
-    text: "That was easy!",
+    subject: "Tu compra a sido procesada",
+    html:
+      "<h1>ticket:</h1>  " +
+      ticket._id +
+      "<br>" +
+      "<p>Horario de compra: </p>" +
+      ticket.fechaDeCompra +
+      "<p>Pelicula: </p>" +
+      ticket.nombre +
+      "<p>Precio: </p>" +
+      ticket.precio,
   };
 
   transporter.verify(function (error, success) {
