@@ -34,8 +34,9 @@ class ServiceFunciones {
 
     restarCapacidad = async (id) => {
         let funcion =  await this.funcionDAO.getFuncion(id)
-        funcion.capacidad = funcion.capacidad -1;
+        if(funcion.capacidad > 0) funcion.capacidad--
         this.funcionDAO.updateFuncion(funcion,id)
+        return funcion.capacidad
     }
 
     getFuncionMasVendida = async ()  => {     
