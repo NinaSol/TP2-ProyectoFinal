@@ -73,8 +73,6 @@ describe('test api rest full', () => {
           expect(response.status).to.eql(200);
           expect(response).to.be.an("object")
           expect("Content-Type", /json/);
-
-          console.log(response)
           expect(response.body).to.include.keys('idPelicula','capacidad', 'capacidadMax', 'fecha')
 
         });
