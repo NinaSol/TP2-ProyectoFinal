@@ -48,11 +48,16 @@ class ControladorData {
     //res.redirect('/')
   };
 
-  updatePelicula = async (req, res) => {
-    const { id } = req.params;
-    const data = req.body;
+  comprarPelicula = async (req, res) => {
+    // const {id} = req.params
+    // const peliculas = req.body
 
-    res.json(await this.apiUsuarios.agregarPelicula(data, id));
+     const {_id} = req.body
+     const peliculas = req.body
+
+
+    res.json(await this.apiUsuarios.agregarPelicula(_id, peliculas))
+
   };
 
 

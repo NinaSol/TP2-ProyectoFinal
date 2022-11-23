@@ -5,7 +5,7 @@
   "description": "Por ahora el README está vacío jeje",
   "main": "config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/apiRestFullUsuarios.test.js",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
@@ -21,10 +21,16 @@
   },
   "homepage": "https://github.com/NinaSol/TP2-ProyectoFinal#readme",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "chai": "^4.3.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "faker": "^6.6.6",
+    "mocha": "^10.1.0",
     "mongodb": "^4.11.0",
-    "nodemon": "^2.0.20"
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1"
   }
 }
