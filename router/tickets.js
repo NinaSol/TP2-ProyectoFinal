@@ -20,7 +20,7 @@ export class TicketRouter {
     this.router.get("/:id?", this.ticketController.obtenerTicket);
     this.router.post("/", this.ticketController.crearTicket);
     //this.router.put('/:id', this.ticketController.actualizarTicket)
-    //this.router.delete('/:id', this.ticketController.eliminarTicket)
+    this.router.delete('/:id', this.ticketController.eliminarTicket) // temporal para borrar mas rapido
 
     return this.router;
   }

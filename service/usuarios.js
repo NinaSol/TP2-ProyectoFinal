@@ -1,11 +1,15 @@
 import config from '../config.js'
 import DataFactory from '../model/DAO/usuarios/dataFactory.js'
-import ServiceTicket from '../service/ticket.js'
+import TicketFactoryDAO from '../model/DAO/tickets/ticketsFactory.js';
+import ServiceFunciones from '../service/funciones.js'
+import { usuarioDTO }  from '../model/DTO/usuarios.js'
+
 
 class ServiceData {
     constructor() {
         this.usuariosModel = DataFactory.get(config.DB);
-        this.ticket = new ServiceTicket();
+        this.ticketDAO = TicketFactoryDAO.get(config.DB);
+        this.funcionService =  new ServiceFunciones()
     }
 
     validarAdm = async (user) =>{
@@ -77,11 +81,23 @@ class ServiceData {
         return await this.usuariosModel.saveData(usuario);
     }
 
-    
-    agregarPelicula = async(data,id) =>{
-       //idFuncion, idUsuario, idPelicula
-        this.ticket.crearTicket(data)
-        return this.usuariosModel.updateData(data, id)
+
+    agregarPelicula = async (id, pelicula) => {
+
+        console.log(pelicula);
+        const funcion = await this.funcionService.getFuncionesPorPelicula(pelicula.peliculas._id);
+        const idFunc = funcion[0]._id
+        console.log(funcion[0]);
+
+        let ticket = usuarioDTO(idFunc, id, pelicula) // lo uso para concatenar los id y mandar un unico objeto
+        let resultado = 'El usuario no existe'
+
+        if (funcion[0].capacidad < funcion[0].capacidadMax) {
+            await this.ticketDAO.crearTicket(ticket);
+            await this.funcionService.restarCapacidad(funcion[0]._id);
+            resultado = await this.usuariosModel.updateData(pelicula, id)
+        }
+        return resultado
     }
 
     actualizarUsuario = async(data,id) =>{
