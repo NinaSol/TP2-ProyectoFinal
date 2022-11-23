@@ -2,8 +2,6 @@ import supertest from 'supertest';
 const request = supertest('http://localhost:8080')
 import {expect} from 'chai'
 import generador from '../generador/funciones.js'
-import { should } from 'chai';  
-should();  
 
 
 

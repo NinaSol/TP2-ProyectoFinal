@@ -2,7 +2,6 @@ import supertest from "supertest";
 const request = supertest("http://localhost:8080");
 import { expect } from "chai";
 import generador from "../generador/usuarios.js";
-import { parse } from "dotenv";
 
 describe("test api usuarios", () => {
   describe("GET", () => {

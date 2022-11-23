@@ -8,6 +8,10 @@ export class ControladorPeliculas {
         const { id } = req.params
         res.json( await this.peliculasService.getPeliculas(id) )
     }
+    getPeliId = async (req,res) => {
+        const { _id } = req.body
+        res.json( await this.peliculasService.getPeliculas(_id) )
+    }
     savePelicula = async (req,res) => {
         const pelicula = req.body
         res.json( await this.peliculasService.savePelicula(pelicula) )
