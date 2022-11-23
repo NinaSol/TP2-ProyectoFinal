@@ -84,17 +84,16 @@ class ServiceData {
 
     agregarPelicula = async (id, pelicula) => {
 
-        console.log(pelicula);
         const funcion = await this.funcionService.getFuncionesPorPelicula(pelicula.peliculas._id);
-        const idFunc = funcion[0]._id
-        console.log(funcion[0]);
+        const idFunc = funcion._id
+
 
         let ticket = usuarioDTO(idFunc, id, pelicula.peliculas._id, pelicula.peliculas.fecha) // lo uso para concatenar los id y mandar un unico objeto
-        let resultado = 'El usuario no existe'
+        let resultado = 'El usuario no existe';
 
-        if (funcion[0].capacidad < funcion[0].capacidadMax) {
+        if (funcion.capacidad < funcion.capacidadMax) {
             await this.ticketDAO.crearTicket(ticket);
-            await this.funcionService.restarCapacidad(funcion[0]._id);
+            await this.funcionService.restarCapacidad(idFunc);
             resultado = await this.usuariosModel.updateData(pelicula, id)
         }
         return resultado
