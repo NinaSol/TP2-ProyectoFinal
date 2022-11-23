@@ -5,7 +5,7 @@
   "description": "Por ahora el README está vacío jeje",
   "main": "config.js",
   "scripts": {
-    "test": "mocha test/*.test.js --timeout 10000",
+    "test": "mocha test/*.test.js ",
     "test-usuarios" : "mocha test/apiRestFullUsuarios.test.js",
     "test-funciones": "mocha test/apiRestFullfunciones.test.js",
     "start": "node server.js",
