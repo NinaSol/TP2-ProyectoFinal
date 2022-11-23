@@ -5,7 +5,7 @@
   "description": "Por ahora el README está vacío jeje",
   "main": "config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./tests",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
@@ -26,6 +26,9 @@
     "express": "^4.18.2",
     "mongodb": "^4.11.0",
     "nodemailer": "^6.8.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1",
+    "chai": "^4.3.7"
+
   }
 }
