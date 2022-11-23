@@ -28,12 +28,15 @@ class DataMongoDAO {
   getAllData = async () => {
     if (!CnxMongoDB.connection) return [];
     try {
-      let data = await CnxMongoDB.db.collection("usuarios").find({}).toArray();
-      return data;
+      let Usuarios = await CnxMongoDB.db.collection("usuarios").find({}).toArray();
+      return Usuarios;
     } catch {
       return [];
     }
   };
+
+
+
 
   saveData = async (user) => {
     if (!CnxMongoDB.connection) return {};

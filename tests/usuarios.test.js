@@ -4,13 +4,13 @@ import { expect } from "chai";
 import generador from "../generador/usuarios.js";
 
 describe("test api usuarios", () => {
-  // describe("GET", () => {
-  //   it("Metodo Get usuarios, retorno esperado: 200 ", async () => {
-  //     let respuesta = await request.get("/cineort/usuarios");
 
-  //     expect(respuesta.status).to.eql(200);
-  //   });      ESTE N0 PASA NO SE PQ DESP LO MIRO
-  // });
+   describe("GET", () => {
+    it("Metodo Get usuarios, retorno esperado: 200", async () => {
+      let res = await request.get("/cineort/usuarios");
+      expect(res.status).to.eql(200);
+    });
+  });
 
   describe("GET", () => {
     it("Metodo Get usuarios mayores y menores, retorno esperado: 200 ", async () => {
