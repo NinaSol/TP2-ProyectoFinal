@@ -41,14 +41,14 @@ describe("test api tickets", () => {
     it("status al consultar tickets esperado: 200", async () => {
       let res = await request.get("/cineort/tickets/mayorConsumo");
       expect(res.status).to.eql(200);
-      expect(res._body).to.equal("2022-11-22T06:00:00.000Z");
+      expect(res._body).to.equal("2022-11-23T03:00:00.000Z");
     });
   });
   describe("GET", () => {
     it("status al consultar tickets esperado: 200", async () => {
       let res = await request.get("/cineort/tickets/menorConsumo");
       expect(res.status).to.eql(200);
-      !expect(res._body).to.equal("2022-11-13T06:00:00.000Z");
+      !expect(res._body).to.equal("2022-11-13T03:00:00.000Z");
     });
   });
 });

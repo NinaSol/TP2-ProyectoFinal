@@ -15,6 +15,7 @@ export class RouterPeliculas {
         this.router.get('/duracion/larga', this.controladorPeliculas.getPeliMasLarga)
         this.router.get('/duracion/corta', this.controladorPeliculas.getPeliMasCorta)
         this.router.post('/', this.controladorPeliculas.savePelicula)
+        this.router.post('/obtenerpeli', this.controladorPeliculas.getPeliId)
         this.router.put('/:id', this.controladorPeliculas.updatePelicula)
         this.router.delete('/:id', this.controladorPeliculas.deletePelicula)
         return this.router
