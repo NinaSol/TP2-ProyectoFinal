@@ -37,14 +37,14 @@ class TicketMongoDAO {
     
     */
 
-    // eliminarTicket = async id => {
-    //     if(!CnxMongoDB.connection) return {}
-    //   id = parseInt(id)
-    //     let ticketEliminado = await this.obtenerTicket(id)
-    //     await CnxMongoDB.db.collection('tickets').deleteOne({_id: id})
+    eliminarTicket = async id => {
+        if(!CnxMongoDB.connection) return {}
+      id = parseInt(id)
+        let ticketEliminado = await this.obtenerTicket(id)
+        await CnxMongoDB.db.collection('tickets').deleteOne({_id: id})
         
-    //     return ticketEliminado    
-    // }
+        return ticketEliminado    
+    }
 }
 
 export default TicketMongoDAO;

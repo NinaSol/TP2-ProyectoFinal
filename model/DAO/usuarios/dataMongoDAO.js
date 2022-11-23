@@ -2,11 +2,13 @@ import { CnxMongoDB } from "../../cnxMongoDB.js";
 import getLastId from "../../../utils/getLastId.js";
 
 class DataMongoDAO {
+
   getData = async (id) => {
     if (!CnxMongoDB.connection) return {};
+    id = parseInt(id)
     let user = await CnxMongoDB.db
       .collection("usuarios")
-      .findOne({ _id: parseInt(id) });
+      .findOne({ _id: id });
     return user;
   };
 

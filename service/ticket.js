@@ -70,9 +70,9 @@ class ServiceTicket {
     }
 
     */
-    //  eliminarTicket = async id => {
-    //      return await this.ticketDAO.eliminarTicket(id)
-    //  } 
+     eliminarTicket = async id => {
+         return await this.ticketDAO.eliminarTicket(id)
+     } 
 }
 
 export default ServiceTicket;

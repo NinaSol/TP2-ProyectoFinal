@@ -10,22 +10,32 @@ const get = ()=>({
 })
 
 const getAgregarPelicula = ()=>({
-    _id: 7,  // este es el id de usuario, No de la pelicula
-    peliculas:{
-        _id: 10,
-        nombre:'test',
-        genero: 'test',
-        director:'no hay',
-        duracion: 44,
-        clasificacion: '+18',
-        imagen:'sin imagen',
-        sinopsis: 'pelicula inventada para test',
-        precio:1111,
+
+    "_id": 4,
+    "peliculas": {
+   "_id": 8,
+   "nombre": "SONRÍE",
+   "genero": "test",
+   "director": "test",
+   "duracion": 115,
+   "clasificacion": "+16",
+   "imagen": "test",
+   "sinopsis": "test",
+   "precio": 900
     }
 
 })
 
+
+const getUser = () => ({
+    email: faker.internet.email(),
+    password: faker.internet.password(),
+})
+
+
+
 export default {
     get,
-    getAgregarPelicula
+    getAgregarPelicula,
+    getUser
 }
