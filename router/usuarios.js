@@ -13,13 +13,13 @@ export class UsuariosRouter {
     this.router.get("/mejorcliente", this.dataController.getMejor);
     this.router.get("/:id/mispeliculas", this.dataController.getPeliculas);
     this.router.get("/:nombre", this.dataController.getNomb);
-    this.router.get("/:id?", this.dataController.getData);
+    //this.router.get("/:id?", this.dataController.getData);
     this.router.post("/", this.dataController.saveData);
     this.router.post("/validar", this.dataController.validarUsuario);
     this.router.post("/validarAdmin", this.dataController.validarAdmin);
     this.router.put("/comprar", this.dataController.comprarPelicula);
-    this.router.put("/:id", this.dataController.updateData);
-    this.router.delete("/:id", this.dataController.deleteData);
+    // this.router.put("/:id", this.dataController.updateData);
+    // this.router.delete("/:id", this.dataController.deleteData);
 
     return this.router;
   }

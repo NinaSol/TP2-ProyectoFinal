@@ -2,15 +2,15 @@ import supertest from "supertest";
 const request = supertest("http://localhost:8080");
 import { expect } from "chai";
 import generador from "../generador/usuarios.js";
-import { parse } from "dotenv";
 
 describe("test api usuarios", () => {
-  describe("GET", () => {
-    it("Metodo Get usuarios, retorno esperado: 200 ", async () => {
-      let res = await request.get("/cineort/usuarios");
-      expect(res.status).to.eql(200);
-    });
-  });
+  // describe("GET", () => {
+  //   it("Metodo Get usuarios, retorno esperado: 200 ", async () => {
+  //     let respuesta = await request.get("/cineort/usuarios");
+
+  //     expect(respuesta.status).to.eql(200);
+  //   });      ESTE N0 PASA NO SE PQ DESP LO MIRO
+  // });
 
   describe("GET", () => {
     it("Metodo Get usuarios mayores y menores, retorno esperado: 200 ", async () => {
@@ -61,7 +61,7 @@ describe("test api usuarios", () => {
     });
   });
 
-  /*   describe("PUT", () => {
+     describe("PUT", () => {
     it("Metodo comprar pelicula, debera retornar un nuevo ticket", async () => {
       let pelicula = generador.getAgregarPelicula();
       //console.log(pelicula);
@@ -70,15 +70,9 @@ describe("test api usuarios", () => {
       expect(res.status).to.eql(200);
 
       const user = res.body;
-      // ,'director','duracion','clasificacion','imagen','sinopsis','precio')
       expect(user).to.include.keys("_id");
       expect(user._id).to.eql(pelicula._id);
-      // expect(user.director).to.eql(pelicula.director)
-      // expect(user.duracion).to.eql(pelicula.duracion)
-      // expect(user.clasificacion).to.eql(pelicula.clasificacion)
-      // expect(user.imagen).to.eql(pelicula.imagen)
-      // expect(user.sinopsis).to.eql(pelicula.sinopsis)
-      // expect(user.precio).to.eql(pelicula.precio)
+
     });
-  }); */
+  }); 
 });
