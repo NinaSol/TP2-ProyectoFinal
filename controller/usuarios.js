@@ -55,7 +55,7 @@ class ControladorData {
      const {_id} = req.body
      const peliculas = req.body
 
-
+    console.log(_id);
     res.json(await this.apiUsuarios.agregarPelicula(_id, peliculas))
 
   };

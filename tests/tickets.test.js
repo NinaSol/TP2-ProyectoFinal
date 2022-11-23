@@ -2,7 +2,7 @@ import supertest from "supertest";
 import { expect } from "chai";
 
 describe("test api tickets", () => {
-  const request = supertest("http://localhost:8082");
+  const request = supertest("http://localhost:8080");
 
   describe("GET", () => {
     it("status al consultar tickets esperado: 200", async () => {
