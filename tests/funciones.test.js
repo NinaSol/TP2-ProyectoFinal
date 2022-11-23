@@ -19,7 +19,7 @@ describe('test api Funciones', () => {
         })
     })
 
-    describe('Update de funciones', () => {
+    describe('UPDATE de funciones', () => {
         it('debería retornar un objeto y status 200', async () => {
             let responseFunciones = await request.get('/cineort/funciones/1')
             expect(responseFunciones.status).to.eql(200)
@@ -68,7 +68,7 @@ describe('test api Funciones', () => {
 
       });
 
-      describe("Get /obtenerFuncionesPorPelicula", function () {
+      describe("GET /obtenerFuncionesPorPelicula", function () {
         it('Debería retornar status 200 y encotrar la función del Id de Pelicula pasado', async function () {
           const response = await request.get("/cineort/funciones/obtenerPorPelicula/2")
           expect(response.status).to.eql(200);
