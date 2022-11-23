@@ -1,8 +1,9 @@
-export function usuarioDTO( idFuncion, idUsuario, pelicula){
+export function usuarioDTO( idFuncion, idUsuario, idPelicula, fecha){
 
     return{
         idFuncion,
         idUsuario,
-        ...pelicula
+        idPelicula,
+        fecha
     }
 }
