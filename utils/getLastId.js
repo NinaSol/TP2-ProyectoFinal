@@ -2,15 +2,15 @@ import { CnxMongoDB } from "../model/cnxMongoDB.js";
 
 const getLastId = async (coleccion) => {
   if (!CnxMongoDB.connection) return {};
-  let cantPelis = await CnxMongoDB.db.collection(coleccion).count();
-  if (cantPelis > 0) {
-    let arrayPelis = await CnxMongoDB.db
+  let cant = await CnxMongoDB.db.collection(coleccion).count();
+  if (cant > 0) {
+    let array = await CnxMongoDB.db
       .collection(coleccion)
       .find({})
       .sort({ _id: -1 })
       .toArray();
-    let lastPeli = arrayPelis[0];
-    return parseInt(lastPeli._id);
+    let last = array[0];
+    return parseInt(last._id);
   } else {
     return 0;
   }
