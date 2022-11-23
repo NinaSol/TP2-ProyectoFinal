@@ -17,7 +17,7 @@ export class UsuariosRouter {
     this.router.post("/", this.dataController.saveData);
     this.router.post("/validar", this.dataController.validarUsuario);
     this.router.post("/validarAdmin", this.dataController.validarAdmin);
-    this.router.put("/:id", this.dataController.updatePelicula);
+    this.router.put("/comprar", this.dataController.comprarPelicula);
     this.router.put("/:id", this.dataController.updateData);
     this.router.delete("/:id", this.dataController.deleteData);
 

@@ -57,12 +57,12 @@ class FuncionesMongoDAO {
 
   getFuncionesPorPelicula = async (idPelicula) => {
     if (!CnxMongoDB.connection) return {};
-    let funciones = await CnxMongoDB.db
-        .collection("funciones")
-        .find({})
-        .toArray();
-    let funcionesEncotradas = funciones.filter(f => f.idPelicula == idPelicula )
-    return funcionesEncotradas;
+    idPelicula = parseInt(idPelicula)
+    let funcion = await CnxMongoDB.db
+      .collection("funciones")
+      .findOne({ idPelicula: idPelicula });
+    return funcion;
+
 }
 
 

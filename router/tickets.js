@@ -19,6 +19,7 @@ export class TicketRouter {
     );
     this.router.get("/:id?", this.ticketController.obtenerTicket);
     this.router.post("/", this.ticketController.crearTicket);
+    this.router.delete("/:id", this.ticketController.eliminarTicket); // temporal para borrar mas rapido
 
     return this.router;
   }
