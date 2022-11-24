@@ -80,7 +80,7 @@ class ServiceTicket {
     await this.ticketDAO.crearTicket(ticket);
     const usuario = await this.usuarioDAO.getData(ticket.idUsuario);
     const ticketCompleto = await this.obtenerTicketCompleto(ticket._id);
-    if (ticket.length === undefined) {
+    if (ticket.length === undefined && usuario != null) {
       await enviarMail(usuario.email, ticketCompleto).catch(console.error);
     }
 
