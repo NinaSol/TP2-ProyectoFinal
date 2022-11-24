@@ -25,15 +25,15 @@ class DataMongoDAO {
     }
   };
 
-  getAllData = async () => {
-    if (!CnxMongoDB.connection) return [];
-    try {
-      let Usuarios = await CnxMongoDB.db.collection("usuarios").find({}).toArray();
-      return Usuarios;
-    } catch {
-      return [];
-    }
-  };
+  // getAllData = async () => {
+  //   if (!CnxMongoDB.connection) return [];
+  //   try {
+  //     let Usuarios = await CnxMongoDB.db.collection("usuarios").find({}).toArray();
+  //     return Usuarios;
+  //   } catch {
+  //     return [];
+  //   }
+  // };
 
 
 

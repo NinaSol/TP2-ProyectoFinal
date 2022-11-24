@@ -70,6 +70,13 @@ class ControladorData {
 
     res.json(await this.apiUsuarios.eliminarUsuario(id));
   };
+
+  updateUsuario = async (req, res) => {
+    const data = req.body;
+    const {_id} = req.body;
+
+    res.json(await this.apiUsuarios.editarUsuario(data, _id));
+  };
 }
 
 export default ControladorData;
