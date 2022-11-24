@@ -68,7 +68,7 @@ describe('test api Funciones', () => {
 
       describe("GET /obtenerFuncionesPorPelicula", function () {
         it('Debería retornar status 200 y encotrar la función del Id de Pelicula pasado', async function () {
-          const response = await request.get("/cineort/funciones/obtenerPorPelicula/2")
+          const response = await request.get("/cineort/funciones/obtenerPorPelicula/1")
           expect(response.status).to.eql(200);
           expect(response).to.be.an("object")
           expect("Content-Type", /json/);
