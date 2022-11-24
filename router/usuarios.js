@@ -20,6 +20,7 @@ export class UsuariosRouter {
     this.router.post("/validar", this.dataController.validarUsuario);
     this.router.post("/validarAdmin", this.dataController.validarAdmin);
     this.router.put("/comprar", this.dataController.comprarPelicula);
+    this.router.put("/editar", this.dataController.updateUsuario);
     return this.router;
   }
 }

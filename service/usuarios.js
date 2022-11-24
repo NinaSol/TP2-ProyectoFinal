@@ -107,7 +107,7 @@ class ServiceData {
     return resultado;
   };
 
-  actualizarUsuario = async (data, id) => {
+  editarUsuario = async (data, id) => {
     return this.usuariosModel.updateData(data, id);
   };
 
