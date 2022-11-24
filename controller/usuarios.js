@@ -5,25 +5,25 @@ class ControladorData {
     this.apiUsuarios = new ApiUsuarios();
   }
 
-  validarAdmin = async(req,res) =>{
-    const usuario = req.body
-    res.json(await this.apiUsuarios.validarAdm(usuario))
-  }
+  validarAdmin = async (req, res) => {
+    const usuario = req.body;
+    res.json(await this.apiUsuarios.validarAdm(usuario));
+  };
 
-  validarUsuario = async(req,res) =>{
-    const usuario = req.body
-    res.json(await this.apiUsuarios.validarUsuario(usuario))
-  }
+  validarUsuario = async (req, res) => {
+    const usuario = req.body;
+    res.json(await this.apiUsuarios.validarUsuario(usuario));
+  };
 
-  getPeliculas = async(req,res) =>{
+  getPeliculas = async (req, res) => {
     const { id } = req.params;
-    res.json(await this.apiUsuarios.obtenerPeliculas(id))
-  }
+    res.json(await this.apiUsuarios.obtenerPeliculas(id));
+  };
 
-  getNomb = async(req,res) =>{
-    const {nombre} = req.params;
-    res.json(await this.apiUsuarios.obtenerPorNombre(nombre))
-  }
+  getNomb = async (req, res) => {
+    const { nombre } = req.params;
+    res.json(await this.apiUsuarios.obtenerPorNombre(nombre));
+  };
 
   getMenores = async (req, res) => {
     res.json(await this.apiUsuarios.obtenerMenores());
@@ -52,15 +52,11 @@ class ControladorData {
     // const {id} = req.params
     // const peliculas = req.body
 
-     const {_id} = req.body
-     const peliculas = req.body
+    const { _id } = req.body;
+    const peliculas = req.body;
 
-    console.log(_id);
-    res.json(await this.apiUsuarios.agregarPelicula(_id, peliculas))
-
+    res.json(await this.apiUsuarios.agregarPelicula(_id, peliculas));
   };
-
-
 
   updateData = async (req, res) => {
     const { id } = req.params;

@@ -79,9 +79,7 @@ class ServiceTicket {
   crearTicket = async (ticket) => {
     await this.ticketDAO.crearTicket(ticket);
     const usuario = await this.usuarioDAO.getData(ticket.idUsuario);
-
     const ticketCompleto = await this.obtenerTicketCompleto(ticket._id);
-
     if (ticket.length === undefined) {
       await enviarMail(usuario.email, ticketCompleto).catch(console.error);
     }
@@ -89,14 +87,9 @@ class ServiceTicket {
     return ticketCompleto;
   };
 
-  /*  actualizarTicket = async (ticket,id) => {
-        return await this.ticketDAO.actualizarTicket(ticket,id)
-    }
-
-    */
-     eliminarTicket = async id => {
-         return await this.ticketDAO.eliminarTicket(id)
-     } 
+  eliminarTicket = async (id) => {
+    return await this.ticketDAO.eliminarTicket(id);
+  };
 }
 
 export default ServiceTicket;

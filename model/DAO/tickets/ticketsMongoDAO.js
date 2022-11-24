@@ -24,27 +24,14 @@ class TicketMongoDAO {
     return ticket;
   };
 
-  /*     actualizarTicket = async (ticket,id) => {
-        if(!CnxMongoDB.connection) return {}
+  eliminarTicket = async (id) => {
+    if (!CnxMongoDB.connection) return {};
+    id = parseInt(id);
+    let ticketEliminado = await this.obtenerTicket(id);
+    await CnxMongoDB.db.collection("tickets").deleteOne({ _id: id });
 
-        await CnxMongoDB.db.collection('tickets').updateOne(
-            {_id: ObjectId(id)},
-            {$set: ticket}
-        )
-        let ticketActualizado = await this.obtenerTicket(id)
-        return ticketActualizado    
-    }
-    
-    */
-
-    eliminarTicket = async id => {
-        if(!CnxMongoDB.connection) return {}
-      id = parseInt(id)
-        let ticketEliminado = await this.obtenerTicket(id)
-        await CnxMongoDB.db.collection('tickets').deleteOne({_id: id})
-        
-        return ticketEliminado    
-    }
+    return ticketEliminado;
+  };
 }
 
 export default TicketMongoDAO;

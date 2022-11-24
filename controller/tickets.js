@@ -27,18 +27,11 @@ class ControllerTicket {
     res.json(await this.serviceTicket.crearTicket(ticket));
   };
 
-  /*   actualizarTicket = async (req,res) => {
-        const { id } = req.params
-        const ticket = req.body
-    
-        res.json(await this.serviceTicket.actualizarTicket(ticket,id))
-    }
-*/
-    eliminarTicket = async (req,res) => {
-        const { id } = req.params
-    
-        res.json(await this.serviceTicket.eliminarTicket(id))
-    } 
+  eliminarTicket = async (req, res) => {
+    const { id } = req.params;
+
+    res.json(await this.serviceTicket.eliminarTicket(id));
+  };
 }
 
 export default ControllerTicket;
